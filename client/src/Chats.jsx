@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ApolloClient , InMemoryCache, ApolloProvider, useSubscription, gql, useMutation } from '@apollo/client';
-import { Conatiner, Row, Col, FormInput, Button } from 'shards-react';
+import { Container, Row, Col, FormInput, Button } from 'react-bootstrap';
 import { WebSocketLink} from '@apollo/client/link/ws';
 
 const link = new WebSocketLink({
