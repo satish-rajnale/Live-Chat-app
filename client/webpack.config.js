@@ -40,8 +40,8 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "Chat",
-      library: {type: "var", name:"Chat"},
+      name: "chat",
+      library: {type: "var", name:"chat"},
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {

@@ -43,7 +43,9 @@ module.exports = {
       name: "home",
       library: {type: "var", name: "home"},
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        chat: "chat"
+      },
       exposes: {},
       shared: {
         ...deps,
