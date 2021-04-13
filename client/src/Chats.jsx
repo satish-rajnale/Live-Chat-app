@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ApolloClient , InMemoryCache, ApolloProvider, useSubscription, gql, useMutation } from '@apollo/client';
-import { Container, Row, Col, FormInput, Button } from 'react-bootstrap';
+import { Container, Row, Col, FormControl, Button } from 'react-bootstrap';
 import { WebSocketLink} from '@apollo/client/link/ws';
 
 const link = new WebSocketLink({
@@ -110,45 +110,48 @@ const Chat = () => {
     }
 
 
-    return (<div
+    return (<Container
                  style={{ 
                      padding:"30px",
         width:"1224px",
         margin:"auto",
         borderRadius:"1em",
-        boxShadow:"-3px -2px 25px 8px #313131",
+        boxShadow:"-3px -2px 35px 8px #9e9c9c",
         width:"80%",
         height: "90vh",
         backgroundColor: "whitesmoke",
         alignItems: "center",
         justifyContent: "center"
-    }}><Messages 
-           user="Jmas"/>
+    }}><Messages user={state.user}/>
            <Row>
                <Col xs={2} style={{padding: 0}}>
-                   <FormInput
-                        value={state.content}
+                   <FormControl
+                        
+                        size="sm" type="text" placeholder="user name" 
+                        value={state.user}
                         label="user"
                         onChange={({target})=> setState({...state,user: target.value})}
                    />
                </Col>
                <Col xs={8} >
-                   <FormInput
+                   <FormControl
                         value={state.content}
-                        label="user"
+                        size="sm"
+                        label="content"
+                        type="text" placeholder="Enter input here" 
                         onChange={({target})=> setState({...state,content: target.value})}
                         onKeyUp = {
                             (e) => {if(e.keyCode === 13){onsend();}}
                         }
                    />
                </Col>
-               <Button onClick={() => onsend()}>
+               <Button size="sm" onClick={() => onsend()}>
                    Send
                </Button>
            </Row>
         
            
-           </div>)
+           </Container>)
 };
 
 
