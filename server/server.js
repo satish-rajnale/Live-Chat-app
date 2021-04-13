@@ -52,7 +52,7 @@ const resolvers = {
 
                 onMessagesUpdate(()=>{pubsub.publish(channel, {messages})});
 
-                
+                setTimeout(() => pubsub.publish(channel, {messages}), 0)
                 return pubsub.asyncIterator(channel);
             }
         }
