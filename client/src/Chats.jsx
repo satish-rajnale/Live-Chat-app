@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/chat.css'
 import { ApolloClient , InMemoryCache, ApolloProvider, useSubscription, gql, useMutation } from '@apollo/client';
-import { Container, Row, Col, FormControl, Button } from 'react-bootstrap';
+
 import { WebSocketLink} from '@apollo/client/link/ws';
 
 const link = new WebSocketLink({
@@ -110,25 +110,25 @@ const Chat = () => {
     }
 
 
-    return (<Container >
+    return (<div className="container" >
         <div className="messageContainer">
         <Messages user={state.user}/>
         </div>
         
-           <Row className="inputContainer">
-               <Col xs={2} style={{padding: 0}}>
-                   <FormControl
+           <div className="row">
+               <div className="col" style={{padding: 0}}>
+                   <input
                         
-                        size="sm" type="text" placeholder="user name" 
+                        size="30px" type="text" placeholder="user name" 
                         value={state.user}
                         label="user"
                         onChange={({target})=> setState({...state,user: target.value})}
                    />
-               </Col>
-                <Col xs={8} >
-                    <FormControl
+               </div>
+                <div className="col">
+                    <input
                             value={state.content}
-                            size="sm"
+                            size="30px"
                             label="content"
                             type="text" placeholder="Enter input here" 
                             onChange={({target})=> setState({...state,content: target.value})}
@@ -136,14 +136,14 @@ const Chat = () => {
                                 (e) => {if(e.keyCode === 13){onsend();}}
                             }
                     />
-                </Col>
-                <Button size="sm" onClick={() => onsend()}>
+                </div>
+                <button size="30px" onClick={() => onsend()}>
                     Send
-                </Button>
-           </Row>
+                </button>
+           </div>
         
            
-           </Container>)
+           </div>)
 };
 
 
