@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin:auto;
+    padding:30px;
+    width:90%;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(59, 2, 151);
+
+    .Chat{
+        width:100%;
+        height: 90vh;
+        background-color: rgb(255, 0, 0);
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        .userList{
+            display: flex;
+            width: 300px;
+            height: 100%;
+            background-color: brown;
+        }
+
+      }
+
+
+
+  }
+
+  
