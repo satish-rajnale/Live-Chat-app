@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './css/chat.css'
 import { ApolloClient , InMemoryCache, ApolloProvider, useSubscription, gql, useMutation } from '@apollo/client';
 import { Container, Row, Col, FormControl, Button } from 'react-bootstrap';
 import { WebSocketLink} from '@apollo/client/link/ws';
@@ -110,20 +110,12 @@ const Chat = () => {
     }
 
 
-    return (<Container
-                 style={{ 
-                     padding:"30px",
-        width:"1224px",
-        margin:"auto",
-        borderRadius:"1em",
-        boxShadow:"-3px -2px 35px 8px #9e9c9c",
-        width:"80%",
-        height: "90vh",
-        backgroundColor: "whitesmoke",
-        alignItems: "center",
-        justifyContent: "center"
-    }}><Messages user={state.user}/>
-           <Row>
+    return (<Container >
+        <div className="messageContainer">
+        <Messages user={state.user}/>
+        </div>
+        
+           <Row className="inputContainer">
                <Col xs={2} style={{padding: 0}}>
                    <FormControl
                         
@@ -133,21 +125,21 @@ const Chat = () => {
                         onChange={({target})=> setState({...state,user: target.value})}
                    />
                </Col>
-               <Col xs={8} >
-                   <FormControl
-                        value={state.content}
-                        size="sm"
-                        label="content"
-                        type="text" placeholder="Enter input here" 
-                        onChange={({target})=> setState({...state,content: target.value})}
-                        onKeyUp = {
-                            (e) => {if(e.keyCode === 13){onsend();}}
-                        }
-                   />
-               </Col>
-               <Button size="sm" onClick={() => onsend()}>
-                   Send
-               </Button>
+                <Col xs={8} >
+                    <FormControl
+                            value={state.content}
+                            size="sm"
+                            label="content"
+                            type="text" placeholder="Enter input here" 
+                            onChange={({target})=> setState({...state,content: target.value})}
+                            onKeyUp = {
+                                (e) => {if(e.keyCode === 13){onsend();}}
+                            }
+                    />
+                </Col>
+                <Button size="sm" onClick={() => onsend()}>
+                    Send
+                </Button>
            </Row>
         
            

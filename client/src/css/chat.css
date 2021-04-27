@@ -2,4 +2,26 @@
   margin: 0;
   padding: 0;
 }
+
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
+  height: 100%;
+  background-color: whitesmoke;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .messageContainer {
+  height: 90%;
+  overflow-y: scroll;
+}
+
+.container .inputContainer {
+  height: 5%;
+  width: 100%;
+  position: fixed;
+}
 /*# sourceMappingURL=chat.css.map */
