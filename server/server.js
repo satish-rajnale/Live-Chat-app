@@ -6,7 +6,13 @@ const typeDefs = `
     type Message {
         id : ID!
         user : String!
-        content : String!
+        contents : [Content!]!
+    }
+    type Content {
+        email: String!
+        full_name: String!
+        contact: String!
+
     }
 
     type Query {
@@ -14,7 +20,7 @@ const typeDefs = `
     }
 
     type Mutation {
-        postMessages(user: String! , content: String!) : ID!
+        postMessages(user: String! ,  contents : [Content!]!) : ID!
     }
 
     type Subscription {
@@ -34,12 +40,12 @@ const resolvers = {
         messages : () => messages,
     },
     Mutation: {
-        postMessages: (parent, { user, content}) => {
+        postMessages: (parent, { user, contents}) => {
             const id = messages.length;
             messages.push({
                 id,
                 user,
-                content
+                contents
             });
             subscribers.forEach((fn)=> fn());
             return id;

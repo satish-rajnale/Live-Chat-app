@@ -24,14 +24,14 @@ const GET_MESSAGES = gql`
         messages {
         id
         user
-        content
+        contents
         }
     }
 `;
 
 const POST_MESSAGE =gql`
- mutation ($user:String!, $content:String!){
-     postMessages(user:$user, content:$content)
+ mutation ($user:String!, $contents : [Content!]!){
+     postMessages(user:$user, content:$contents)
  }
 `;
 
@@ -43,7 +43,7 @@ const Messages= ({ user }) => {
     }
     return (
         <>
-        {data.messages.map(({id, user: messageUser, content}) => (
+        {data.messages.map(({id, user: messageUser, contents}) => (
             <div
                 style={{
                     display: "flex",
@@ -77,7 +77,7 @@ const Messages= ({ user }) => {
                     color: user === messageUser ? "white" : "black",
                     background: user === messageUser ? "#58bf56" : "#e5e6ea"
                 }}>
-                    {content}
+                    {contents}
                 </div>
 
             </div>
